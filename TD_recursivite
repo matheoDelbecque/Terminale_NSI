@@ -1,0 +1,73 @@
+#exercice 1
+def somme_recursif(n):
+    if n == 0 :
+        return 0
+    else : 
+        return n + somme_recursif(n-1)
+
+##somme_recursif(100)
+
+def somme_iteratif(n):
+    somme = 0
+    for e in range(n+1):
+        somme = somme + e
+    return somme
+
+##print(somme_iteratif(4))
+
+import timeit
+
+print(timeit.timeit('somme_recursif(100)', number=50, setup="from __main__ import somme_recursif"))
+print(timeit.timeit('somme_iteratif(100)', number=50, setup="from __main__ import somme_iteratif"))
+
+#exercice 2
+# Q1
+def prems(n):
+    if n == 0 :
+        return None
+    else :
+        print("un très mauvais exemple")
+        prems(n-1)
+
+prems(4)
+
+# Q2
+def prems(n):
+    if n != 0 :
+        print("un très mauvais exemple")
+        prems(n-1)
+    else :
+        return None
+
+prems(4)
+
+# exercice 3
+def factorielle(n):
+    if n == 1 :
+        return 1
+    elif n == 0 :
+        return 1
+    else :
+        calcul = n * factorielle(n-1)
+        return calcul
+print(factorielle(0))
+
+# exercice 4
+def fonctionDeux(n):
+    if n == 0 :
+        return 1
+    else :
+        return n + fonctionDeux(n-2)
+print(fonctionDeux(10))
+print(fonctionDeux(5))
+
+def mystere(n,p):
+    """
+    n et p sont deux entiers naturels
+    """
+    if p == 0 :
+        return 0
+    else :
+        return n + mystere(n, p-1)
+
+print(mystere(3,6))
