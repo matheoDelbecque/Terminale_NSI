@@ -1,0 +1,88 @@
+#SUJET BAC 1
+#exercice 1
+def recherche(caractere,mot):
+    occurrence = 0
+    for e in mot:
+        if e == caractere:
+            occurrence = occurrence + 1
+    return occurrence
+print(recherche('e', "sciences"))
+print(recherche('i',"mississippi"))
+print(recherche('a',"mississippi"))
+
+#SUJET BAC 2
+#exercice 1
+def moyenne(liste):
+    num = 0
+    denom = 0
+    for tupl in liste:
+        num = num + tupl[0] * tupl[1]
+        denom = denom + tupl[1]
+    return num/denom
+print(moyenne([(15,2),(9,1),(12,3)]))
+
+#SUJET BAC 15
+#exercice 1
+def nb_repetitions(elt,tab):
+    resultat = 0
+    for e in tab:
+        if e == elt:
+            resultat = resultat + 1
+    return resultat
+print(nb_repetitions(5,[2,5,3,5,6,9,5]))
+print(nb_repetitions('A',[ 'B', 'A', 'B', 'A', 'R']))
+print(nb_repetitions(12,[1, '! ',7,21,36,44]))
+
+#exercice 2
+def binaire(a):
+    bin_a = str(a%2)
+    a = a // 2
+    while a != 0 :
+        bin_a = str(a%2) + bin_a
+        a = a//2
+    return bin_a
+print(binaire(0))
+print(binaire(77))
+
+#SUJET BAC 16
+#exercice 1
+def maxi(tab):
+    res = 0
+    i_max = 0
+    for i in range(len(tab)):
+        if tab[i] > res :
+            res = tab[i]
+            i_max = i
+    return res,i_max
+print(maxi([1,5,6,9,1,2,3,7,9,8]))
+
+#SUJET BAC 17
+#exercice 1
+def nombre_de_mots(phrase):
+    mots = 0
+    for e in phrase:
+        if e == ' ':
+            mots = mots + 1
+        elif e == '.':
+            mots = mots + 1
+    return mots
+print(nombre_de_mots('Le point d exclamation est separe !'))
+print(nombre_de_mots('Il y a un seul espace entre les mots !'))
+print(nombre_de_mots('Le point final est colle au dernier mot.'))
+print(nombre_de_mots('Gilbouze macarbi acra cor ed filbuzine ?'))
+
+#SUJET BAC 18
+#exercice 1
+t_moy = [14.9, 13.3, 13.1, 12.5, 13.0, 13.6, 13.7]
+annees = [2013, 2014, 2015, 2016, 2017, 2018, 2019]
+
+def mini(releve,date) :
+    t_min = releve[0]
+    ind_min = 0
+    for i in range(len(releve)) :
+        if t_min > releve[i] :
+            t_min = releve[i]
+            ind_min = i
+    return t_min,date[ind_min]
+
+print(mini(t_moy,annees))
