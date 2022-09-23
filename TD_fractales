@@ -1,0 +1,19 @@
+#exercice 0
+from turtle import forward,left,right,penup,pendown,forward,speed,circle
+
+forward(50)
+left(90)
+forward(150)
+left(90)
+forward(50)
+left(90)
+forward(150)
+penup()
+left(180)
+forward(150)
+right(90)
+forward(50)
+left(90)
+forward(40)
+pendown()
+circle(25)
