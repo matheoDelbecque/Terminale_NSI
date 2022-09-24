@@ -21,6 +21,19 @@ def moyenne(liste):
     return num/denom
 print(moyenne([(15,2),(9,1),(12,3)]))
 
+#SUJET BAC 3
+#exercice 1
+def delta(tab):
+    res = []
+    for i in range(len(tab)):
+        if i == 0:
+            res = res + [tab[0]]
+        else:
+            res = res + [(tab[i] - tab[i-1])]
+    return res
+print(delta([1000, 800, 802, 1000, 1003]))
+print(delta([42]))
+
 #SUJET BAC 15
 #exercice 1
 def nb_repetitions(elt,tab):
