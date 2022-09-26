@@ -81,3 +81,14 @@ def puissance(a,n):
         return a * puissance(a,n-1)
 
 print(puissance(3,3))
+
+#Q2
+def puissance_V2(a,n):
+    if n == 0 :
+        return 1
+    elif n % 2 == 0:
+        return puissance_V2(a*a,n/2)
+    else :
+        return a * puissance_V2(a*a,(n-1)/2)
+
+print(puissance_V2(3,5))
