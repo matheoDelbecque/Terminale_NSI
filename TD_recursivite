@@ -71,3 +71,13 @@ def mystere(n,p):
         return n + mystere(n, p-1)
 
 print(mystere(3,6))
+
+#exercice 5
+#Q1
+def puissance(a,n):
+    if n == 0:
+        return 1
+    else:
+        return a * puissance(a,n-1)
+
+print(puissance(3,3))
