@@ -1,4 +1,4 @@
-#exercice 1
+#exercice 1 (pas finie)
 def somme_recursif(n):
     if n == 0 :
         return 0
