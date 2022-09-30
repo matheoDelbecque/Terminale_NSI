@@ -17,3 +17,35 @@ left(90)
 forward(40)
 pendown()
 circle(25)
+
+#exercice 1
+import turtle
+
+#Q3
+def dessine(n):
+    if n <= 0:
+        return None
+    else :
+        turtle.forward(n)
+        turtle.right(90)
+        return dessine(n-2)
+dessine(20)
+
+#Q4
+def dessine(n):
+    if n <= 0:
+        return None
+    else :
+        turtle.forward(n)
+        turtle.right(90)
+        return dessine(n-10)
+dessine(500)
+
+#Q5.a
+def dessine_iteratif(n):
+    k = n
+    while k > 0:
+        turtle.forward(k)
+        turtle.right(90)
+        k = k - 2
+dessine_iteratif(20)
