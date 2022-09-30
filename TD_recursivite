@@ -80,7 +80,7 @@ def puissance(a,n):
     else:
         return a * puissance(a,n-1)
 
-print(puissance(3,3))
+print(puissance(2,5))
 
 #Q2
 def puissance_V2(a,n):
@@ -91,4 +91,4 @@ def puissance_V2(a,n):
     else :
         return a * puissance_V2(a*a,(n-1)/2)
 
-print(puissance_V2(3,5))
+print(puissance_V2(2,5))
