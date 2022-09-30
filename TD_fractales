@@ -59,3 +59,20 @@ def dessine_V2(n,compteur):
         turtle.right(90)
         return dessine_V2(n-2,compteur + 1)
 print(dessine_V2(20,0))
+
+#exercice 2
+import turtle as t
+
+def vonKoch(n,l):
+    if n == 0:
+        t.forward(l)
+    else :
+        vonKoch(n-1, l/3)
+        t.left(60)
+        vonKoch(n-1, l/3)
+        t.right(120)
+        vonKoch(n-1, l/3)
+        t.left(60)
+        vonKoch(n-1, l/3)
+vonKoch(3,500)
+t.exitonclick()
