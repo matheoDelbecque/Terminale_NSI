@@ -49,3 +49,13 @@ def dessine_iteratif(n):
         turtle.right(90)
         k = k - 2
 dessine_iteratif(20)
+
+#Q5.b
+def dessine_V2(n,compteur):
+    if n <= 0:
+        return compteur - 1
+    else :
+        turtle.forward(n)
+        turtle.right(90)
+        return dessine_V2(n-2,compteur + 1)
+print(dessine_V2(20,0))
