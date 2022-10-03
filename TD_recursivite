@@ -92,3 +92,10 @@ def puissance_V2(a,n):
         return a * puissance_V2(a*a,(n-1)/2)
 
 print(puissance_V2(2,5))
+
+#exercice 6
+def pgcd(a,b):
+    if b == 0:
+        return a
+    else:
+        return pgcd(b,a%b)
