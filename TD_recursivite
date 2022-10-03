@@ -99,3 +99,12 @@ def pgcd(a,b):
         return a
     else:
         return pgcd(b,a%b)
+print(pgcd(2562,78))
+
+#exercice 7.1
+def nombre_de_chiffres(x):
+    if x == 0:
+        return 0
+    else:
+        return nombre_de_chiffres(x//10) + 1
+print(nombre_de_chiffres(34639))
