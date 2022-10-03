@@ -108,3 +108,20 @@ def nombre_de_chiffres(x):
     else:
         return nombre_de_chiffres(x//10) + 1
 print(nombre_de_chiffres(34639))
+
+#exercice 7.2
+def nombre_de_chiffres(x):
+    """
+    Description de la fonction : donne le nombre de chiffres composant x
+    x (int) : entier naturel
+    return (int) : le nombre de chiffres de x
+    """
+    assert x >= 0, "Erreur : x n'est pas un entier naturel"
+    if x == 0:
+        return 0
+    else:
+        resultat = nombre_de_chiffres(x//10) + 1
+        assert resultat == len(str(x)), "Erreur : mauvais resultat donnée"
+        return resultat
+help(nombre_de_chiffres)
+print(nombre_de_chiffres(681))
