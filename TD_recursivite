@@ -125,3 +125,15 @@ def nombre_de_chiffres(x):
         return resultat
 help(nombre_de_chiffres)
 print(nombre_de_chiffres(681))
+
+#exercice 8
+def appartient(v,t,i):
+    if i > len(t)-1:
+        return False
+    elif v == t[i]:
+        return True
+    else :
+        return appartient(v,t,i+1)
+    return False
+ma_liste = ['foo', 'bar', 'spam', 'ham', 'eggs']
+print(appartient('spam', ma_liste, 3))
