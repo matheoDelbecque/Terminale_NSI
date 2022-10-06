@@ -137,3 +137,20 @@ def appartient(v,t,i):
     return False
 ma_liste = ['foo', 'bar', 'spam', 'ham', 'eggs']
 print(appartient('spam', ma_liste, 3))
+
+#exercice 9
+chaine = 'python'
+print(chaine[0])
+print(chaine[5])
+print(chaine[1:5])
+
+def est_palindrome_iteratif(chaine):
+    res = ''
+    for i in range(1,len(chaine)+1):
+        res = res + chaine[-i]
+    if chaine == res:
+        return True
+    else:
+        return False
+print(est_palindrome_iteratif('radar'))
+print(est_palindrome_iteratif('python'))
