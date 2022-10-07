@@ -90,3 +90,14 @@ def flocon(n,l):
         vonKoch(n,l)
         t.right(120)
 flocon(3,500)
+
+#exercice 3
+import turtle as t
+t.goto(0,0)
+
+#1)
+def carre(c):
+    for i in range(4):
+        t.forward(c)
+        t.right(90)
+carre(100)
