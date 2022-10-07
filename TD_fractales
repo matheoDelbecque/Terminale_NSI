@@ -92,6 +92,7 @@ def flocon(n,l):
 flocon(3,500)
 
 #exercice 3
+from math import sqrt
 import turtle as t
 t.goto(0,0)
 
@@ -101,3 +102,16 @@ def carre(c):
         t.forward(c)
         t.right(90)
 carre(100)
+
+#2)
+def carre(c,nb):
+    if nb == 0:
+        return None
+    else :
+        for i in range(4):
+            t.forward(c)
+            t.right(90)
+        t.forward(c/2)
+        t.right(45)
+        return carre(sqrt(c**2/2),nb-1)
+carre(200,11)
