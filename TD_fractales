@@ -1,6 +1,11 @@
 #exercice 0
-from turtle import forward,left,right,penup,pendown,forward,speed,circle
+#2) import turtle
 
+#3) dir(turtle)
+
+#4) help(turtle.forward)
+
+#5)
 forward(50)
 left(90)
 forward(150)
@@ -17,6 +22,8 @@ left(90)
 forward(40)
 pendown()
 circle(25)
+
+#6) from turtle import forward,left,right,penup,pendown,forward,speed,circle
 
 #exercice 1
 import turtle
@@ -50,7 +57,7 @@ def dessine_iteratif(n):
         k = k - 2
 dessine_iteratif(20)
 
-#Q5.b
+#Q6
 def dessine_V2(n,compteur):
     if n <= 0:
         return compteur - 1
