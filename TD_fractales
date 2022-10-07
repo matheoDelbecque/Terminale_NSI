@@ -69,6 +69,7 @@ print(dessine_V2(20,0))
 
 #exercice 2
 import turtle as t
+t.goto(0,0)
 
 def vonKoch(n,l):
     if n == 0:
@@ -82,4 +83,10 @@ def vonKoch(n,l):
         t.left(60)
         vonKoch(n-1, l/3)
 vonKoch(3,500)
-t.exitonclick()
+
+def flocon(n,l):
+    t.speed(50)
+    for i in range(n):
+        vonKoch(n,l)
+        t.right(120)
+flocon(3,500)
