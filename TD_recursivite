@@ -154,3 +154,13 @@ def est_palindrome_iteratif(chaine):
         return False
 print(est_palindrome_iteratif('radar'))
 print(est_palindrome_iteratif('python'))
+
+def est_palindrome_recursif(chaine):
+    if len(chaine) == 1 or len(chaine) == 0:
+        return True
+    elif chaine[0] == chaine[len(chaine)-1]:
+        return est_palindrome_recursif(chaine[1:len(chaine)-1])
+    else:
+        return False
+print(est_palindrome_recursif('radar'))
+print(est_palindrome_recursif('python'))
