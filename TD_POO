@@ -13,8 +13,8 @@ class Eleve:
         else:
             return self.nom
     
-    def a_la_moyenne(self,note_max):
-        if self.note == note_max//2:
+    def a_la_moyenne(self,n_max):
+        if self.note >= n_max//2:
             return True
         else:
             return False
@@ -23,3 +23,4 @@ Abdel = Eleve("Abdel","TG",12)
 Hamza = Eleve("Hamza","TG",5)
 
 print(Abdel.comparer(Hamza))
+print(Abdel.a_la_moyenne(20))
