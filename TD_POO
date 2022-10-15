@@ -24,3 +24,11 @@ Hamza = Eleve("Hamza","TG",5)
 
 print(Abdel.comparer(Hamza))
 print(Abdel.a_la_moyenne(20))
+
+#exercice 2.1
+import math
+class TriangleRectangle:
+    def __init__(self,c1,c2):
+        cote1 = c1
+        cote2 = c2
+        hypothenuse = sqrt(c1**2+c2**2)
