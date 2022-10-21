@@ -45,6 +45,27 @@ def recherche(tab):
 print(recherche([1,4,3,5]))
 print(recherche([5,1,2,3,8,-5,-4,7]))
 
+#SUJET BAC 5
+#exercice 1
+def RechercheMinMax(tab):
+    res = {}
+    if tab == []:
+        res["min"] = None
+        res["max"] = None
+        return res
+    min = tab[0]
+    max = tab[0]
+    for i in range(len(tab)):
+        if min > tab[i]:
+            min = tab[i]
+        elif max < tab[i]:
+            max = tab[i]
+    res["min"] = min
+    res["max"] = max
+    return res
+tableau = [0, 1, 4, 2, -2, 9, 3, 1, 7, 1]
+print(RechercheMinMax(tableau))
+
 #SUJET BAC 15
 #exercice 1
 def nb_repetitions(elt,tab):
