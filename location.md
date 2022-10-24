@@ -16,5 +16,6 @@ La relation Agences:
 4. SELECT nom,code FROM Agences WHERE code LIKE '56%';
 5. SELECT nom,code FROM Agences WHERE SUBSTR(code,1,2) = '56';
 6. SELECT DISTINCT ville FROM Agences WHERE SUBSTR(code,1,2) = '56';
-7.
+7. SELECT nom, code FROM Agences WHERE SUBSTR(code,1,2) IN ('56','29','35','22');
 8. SELECT COUNT(*) FROM Agences WHERE pays = 'France';
+9. SELECT COUNT(*) FROM Agences WHERE SUBSTR(code,1,2) IN ('56','29','35','22');
