@@ -29,3 +29,5 @@ La relation Vehicules
 4. SELECT MIN(age) FROM Vehicules WHERE nom LIKE 'Peugeot%';
 5. SELECT MAX(kilometrage) FROM Vehicules;
 6. SELECT AVG(kilometrage) FROM Vehicules;
+7. SELECT * FROM Vehicules ORDER BY kilometrage DESC;
+8. 
