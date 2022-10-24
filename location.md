@@ -10,6 +10,7 @@ Introduction:
    - retour (FK) --> id (Agences)
 
 La relation Agences:
+
 1. SELECT * FROM Agences;
 2. SELECT nom,ville FROM Agences;
 3. SELECT nom FROM Agences WHERE ville = 'Lorient';
