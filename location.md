@@ -20,3 +20,11 @@ La relation Agences:
 7. SELECT nom, code FROM Agences WHERE SUBSTR(code,1,2) IN ('56','29','35','22');
 8. SELECT COUNT(*) FROM Agences WHERE pays = 'France';
 9. SELECT COUNT(*) FROM Agences WHERE SUBSTR(code,1,2) IN ('56','29','35','22');
+
+La relation Vehicules
+
+1. SELECT COUNT(*) FROM Vehicules;
+2. SELECT MIN(age) FROM Vehicules;
+   SELECT MAX(age) FROM Vehicules;
+3. SELECT nom FROM Vehicules WHERE age = 3;
+4. 
