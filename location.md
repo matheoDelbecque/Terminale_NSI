@@ -33,3 +33,4 @@ La relation Vehicules
 8. SELECT nom,immatriculation,kilometrage/age AS km_par_mois FROM Vehicules;
 9. SELECT immatriculation FROM Vehicules WHERE kilometrage/age = (SELECT MAX(kilometrage/age) FROM Vehicules);
 10. SELECT nom,immatriculation,ROUND((kilometrage/age)*0.35) AS recette FROM Vehicules;
+11. SELECT nom,immatriculation,ROUND((kilometrage/age)*0.35) AS recette FROM Vehicules ORDER BY recette DESC;
