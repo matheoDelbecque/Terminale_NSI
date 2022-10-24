@@ -24,7 +24,6 @@ La relation Agences:
 La relation Vehicules
 
 1. SELECT COUNT(*) FROM Vehicules;
-2.a SELECT MIN(age) FROM Vehicules;
-2.b SELECT MAX(age) FROM Vehicules;
+2 SELECT MIN(age) FROM Vehicules; SELECT MAX(age) FROM Vehicules;
 3. SELECT nom FROM Vehicules WHERE age = 3;
 4. 
