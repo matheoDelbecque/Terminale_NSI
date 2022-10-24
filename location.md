@@ -37,4 +37,11 @@ La relation Vehicules
 
 La relation Locations
 
-1.
+1. SELECT * FROM Locations;
+2. SELECT COUNT(*) FROM Locations;
+3. SELECT COUNT(*) FROM Locations WHERE depart <> retour;
+4. SELECT SUM(kilometrage) FROM Locations;
+5. SELECT ROUND(AVG(kilometrage)) FROM Locations WHERE depart = retour;
+6. SELECT * FROM Locations AS L JOIN Vehicules AS V ON V.immatriculation = L.vehicule;
+7. SELECT V.nom,L.vehicule,L.date,L.kilometrage FROM Locations AS L JOIN Vehicules AS V ON V.immatriculation = L.vehicule;
+8. SELECT V.nom,V.immatriculation,L.date,L.kilometrage FROM Locations AS L JOIN Vehicules AS V ON V.immatriculation = L.vehicule WHERE V.immatriculation = 'AB-224-BA' ORDER BY date ASC;
