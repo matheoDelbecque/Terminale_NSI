@@ -30,4 +30,5 @@ La relation Vehicules
 5. SELECT MAX(kilometrage) FROM Vehicules;
 6. SELECT AVG(kilometrage) FROM Vehicules;
 7. SELECT * FROM Vehicules ORDER BY kilometrage DESC;
-8. 
+8. SELECT nom,immatriculation,kilometrage/age AS km_par_mois FROM Vehicules;
+9. 
