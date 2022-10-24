@@ -1,8 +1,8 @@
 Introduction:
 
-2. PK de Agences = id
-   PK de Locations = id
-   PK de Vehicules = immatriculation
+2. - PK de Agences = id
+   - PK de Locations = id
+   - PK de Vehicules = immatriculation
 
 3. Les seuls clé étrangères seront juste dans la relation Locations : 
    - vehicule (FK) --> immatriculation (Vehicules)
