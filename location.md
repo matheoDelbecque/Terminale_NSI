@@ -46,3 +46,10 @@ La relation Locations
 7. SELECT V.nom,L.vehicule,L.date,L.kilometrage FROM Locations AS L JOIN Vehicules AS V ON V.immatriculation = L.vehicule;
 8. SELECT L.* FROM Locations AS L WHERE L.vehicule = 'AB-224-BA' ORDER BY date ASC;
 9. SELECT L.*,A.nom,A.ville FROM Locations AS L JOIN Agences AS A ON A.id = L.depart WHERE L.vehicule = 'AB-224-BA' ORDER BY date ASC;
+10. SELECT DISTINCT A.nom,A.ville FROM Locations AS L JOIN Agences AS A ON A.id = L.depart WHERE L.vehicule = 'AB-224-BA';
+11. SELECT L.date,L.depart,A.nom AS nom_depart,A.ville AS ville_depart,L.retour,
+(SELECT A.nom FROM Agences AS A JOIN Locations AS L ON A.id = L.retour WHERE L.vehicule = 'AB-224-BA' ORDER BY date ASC) AS nom_retour,
+(SELECT A.ville FROM Agences AS A JOIN Locations AS L ON A.id = L.retour WHERE L.vehicule = 'AB-224-BA' ORDER BY date ASC) AS ville_retour
+FROM Locations AS L JOIN Agences AS A ON A.id = L.depart
+WHERE L.vehicule = 'AB-224-BA'
+ORDER BY date ASC;
