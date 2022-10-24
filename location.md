@@ -47,5 +47,5 @@ La relation Locations
 8. SELECT L.* FROM Locations AS L WHERE L.vehicule = 'AB-224-BA' ORDER BY date ASC;
 9. SELECT L.*,A.nom,A.ville FROM Locations AS L JOIN Agences AS A ON A.id = L.depart WHERE L.vehicule = 'AB-224-BA' ORDER BY date ASC;
 10. SELECT DISTINCT A.nom,A.ville FROM Locations AS L JOIN Agences AS A ON A.id = L.depart WHERE L.vehicule = 'AB-224-BA';
-11. - SELECT L.date,L.depart,A.nom AS nom_depart,A.ville AS ville_depart FROM Locations AS L JOIN Agences AS A ON A.id = L.depart WHERE L.vehicule = 'AB-224-BA' ORDER BY date ASC;
-    - SELECT L.date,L.retour,A.nom AS nom_retour,A.ville AS ville_retour FROM Locations AS L JOIN Agences AS A ON A.id = L.retour WHERE L.vehicule = 'AB-224-BA' ORDER BY date ASC;
+11.- SELECT L.date,L.depart,A.nom AS nom_depart,A.ville AS ville_depart FROM Locations AS L JOIN Agences AS A ON A.id = L.depart WHERE L.vehicule = 'AB-224-BA' ORDER BY date ASC;
+   - SELECT L.date,L.retour,A.nom AS nom_retour,A.ville AS ville_retour FROM Locations AS L JOIN Agences AS A ON A.id = L.retour WHERE L.vehicule = 'AB-224-BA' ORDER BY date ASC;
