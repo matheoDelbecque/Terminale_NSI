@@ -26,4 +26,6 @@ La relation Vehicules
 1. SELECT COUNT(*) FROM Vehicules;
 2. SELECT MIN(age) FROM Vehicules; SELECT MAX(age) FROM Vehicules;
 3. SELECT nom FROM Vehicules WHERE age = 3;
-4. 
+4. SELECT MIN(age) FROM Vehicules WHERE nom LIKE 'Peugeot%';
+5. SELECT MAX(kilometrage) FROM Vehicules;
+6. SELECT AVG(kilometrage) FROM Vehicules;
