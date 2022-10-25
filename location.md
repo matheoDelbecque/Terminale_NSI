@@ -49,3 +49,15 @@ La relation Locations
 10. SELECT DISTINCT A.nom,A.ville FROM Locations AS L JOIN Agences AS A ON A.id = L.depart WHERE L.vehicule = 'AB-224-BA';
 11. - SELECT L.date,L.depart,A.nom AS nom_depart,A.ville AS ville_depart FROM Locations AS L JOIN Agences AS A ON A.id = L.depart WHERE L.vehicule = 'AB-224-BA' ORDER BY date ASC;
     - SELECT L.date,L.retour,A.nom AS nom_retour,A.ville AS ville_retour FROM Locations AS L JOIN Agences AS A ON A.id = L.retour WHERE L.vehicule = 'AB-224-BA' ORDER BY date ASC;
+
+Gestion du réseau
+
+1. SELECT * FROM Locations WHERE vehicule = 'DF-269-EF' ORDER BY date DESC;
+2. UPDATE Locations SET kilometrage = 247 WHERE id = 34;
+3. SELECT kilometrage FROM Locations WHERE id = 34;
+4. UPDATE Vehicules SET kilometrage = kilometrage + 247 WHERE immatriculation = 'DF-269-EF';
+5. SELECT kilometrage FROM Vehicules WHERE immatriculation = 'DF-269-EF';
+6. SELECT id FROM Agences WHERE nom = 'Sépamieuayeur';
+7. SELECT MAX(id) FROM Locations;
+8. INSERT INTO Locations(id,vehicule,depart,retour,kilometrage,date,duree) VALUES(41,'AB-224-BA',1,1,NULL,'2020-12-24',2);
+9. 
