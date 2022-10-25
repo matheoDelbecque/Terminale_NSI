@@ -60,4 +60,6 @@ Gestion du réseau
 6. SELECT id FROM Agences WHERE nom = 'Sépamieuayeur';
 7. SELECT MAX(id) FROM Locations;
 8. INSERT INTO Locations(id,vehicule,depart,retour,kilometrage,date,duree) VALUES(41,'AB-224-BA',1,1,NULL,'2020-12-24',2);
-9. 
+9. SELECT V.nom,V.immatriculation FROM Vehicules AS V JOIN Locations AS L ON V.immatriculation = L.vehicule WHERE L.date = '2020-12-24';
+10. SELECT V.nom,V.immatriculation FROM Vehicules AS V JOIN Locations AS L ON V.immatriculation = L.vehicule WHERE L.kilometrage = NULL; (???????)
+11. 
