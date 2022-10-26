@@ -59,7 +59,7 @@ Gestion du réseau
 5. SELECT kilometrage FROM Vehicules WHERE immatriculation = 'DF-269-EF';
 6. SELECT id FROM Agences WHERE nom = 'Sépamieuayeur';
 7. SELECT MAX(id) FROM Locations;
-8. INSERT INTO Locations(id,vehicule,depart,retour,kilometrage,date,duree) VALUES(41,'CC-259-FF',1,1,NULL,'2020-12-24',2);
+8. INSERT INTO Locations(id,vehicule,depart,retour,kilometrage,date,duree) VALUES(41,'CC-259-FF',1,1,NULL,'2020-12-24',0);
 9. SELECT V.nom,V.immatriculation FROM Vehicules AS V JOIN Locations AS L ON V.immatriculation = L.vehicule WHERE L.date = '2020-12-24';
 10. SELECT V.nom,V.immatriculation FROM Vehicules AS V JOIN Locations AS L ON V.immatriculation = L.vehicule WHERE L.kilometrage IS NULL;
 11. 
