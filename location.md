@@ -48,7 +48,7 @@ La relation Locations
 9. SELECT L.*,A.nom,A.ville FROM Locations AS L JOIN Agences AS A ON A.id = L.depart WHERE L.vehicule = 'AB-224-BA' ORDER BY date ASC;
 10. SELECT DISTINCT A.nom,A.ville FROM Locations AS L JOIN Agences AS A ON A.id = L.depart WHERE L.vehicule = 'AB-224-BA';
 11. - SELECT L.date,L.depart,A.nom AS nom_depart,A.ville AS ville_depart FROM Locations AS L JOIN Agences AS A ON A.id = L.depart WHERE L.vehicule = 'AB-224-BA' ORDER BY date ASC;
-    - SELECT L.date,L.retour,A.nom AS nom_retour,A.ville AS ville_retour FROM Locations AS L JOIN Agences AS A ON A.id = L.retour WHERE L.vehicule = 'AB-224-BA' ORDER BY date ASC;
+    - SELECT L.date,L.retour,A.nom AS nom_retour,A.ville AS ville_retour FROM Locations AS L JOIN Agences AS A ON A.id = L.retour WHERE L.vehicule = 'AB-224-BA' ORDER BY date ASC;   (????????????)
 
 Gestion du réseau
 
@@ -61,5 +61,5 @@ Gestion du réseau
 7. SELECT MAX(id) FROM Locations;
 8. INSERT INTO Locations(id,vehicule,depart,retour,kilometrage,date,duree) VALUES(41,'AB-224-BA',1,1,NULL,'2020-12-24',2);
 9. SELECT V.nom,V.immatriculation FROM Vehicules AS V JOIN Locations AS L ON V.immatriculation = L.vehicule WHERE L.date = '2020-12-24';
-10. SELECT V.nom,V.immatriculation FROM Vehicules AS V JOIN Locations AS L ON V.immatriculation = L.vehicule WHERE L.kilometrage = NULL; (???????)
+10. SELECT V.nom,V.immatriculation FROM Vehicules AS V JOIN Locations AS L ON V.immatriculation = L.vehicule WHERE L.kilometrage IS NULL;
 11. 
