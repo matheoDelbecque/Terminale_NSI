@@ -61,4 +61,8 @@ Gestion du réseau
 8. INSERT INTO Locations(id,vehicule,depart,retour,kilometrage,date,duree) VALUES(41,'CC-259-FF',1,1,NULL,'2020-12-24',0);
 9. SELECT V.nom,V.immatriculation FROM Vehicules AS V JOIN Locations AS L ON V.immatriculation = L.vehicule WHERE L.date = '2020-12-24';
 10. SELECT V.nom,V.immatriculation FROM Vehicules AS V JOIN Locations AS L ON V.immatriculation = L.vehicule WHERE L.kilometrage IS NULL;
-11. 
+11. SELECT L.date, L.duree, V.immatriculation, V.nom, depart.nom, depart.ville, retour.nom, retour.ville JOIN Agences AS retour ON L.retour = retour.id JOIN Vehicules AS V ON L.vehicule = V.immatriculation WHERE L.kilometrage IS NULL;
+12. SELECT L.date, L.duree, V.nom, V.immatriculation, depart.nom, depart.ville, retour.nom, retour.ville FROM Locations AS L JOIN Agences AS depart ON L.depart = depart.id JOIN Agences AS retour ON L.retour = retour.id JOIN Vehicules AS V ON L.vehicule = V.immatriculation WHERE L.depart = 9 OR L.retour = 9 ORDER BY L.date;
+13. DELETE FROM Agences WHERE nom = 'Falépa';
+14. SELECT id FROM Locations WHERE depart = 9 OR retour = 9;
+15. 
