@@ -26,9 +26,35 @@ print(Abdel.comparer(Hamza))
 print(Abdel.a_la_moyenne(20))
 
 #exercice 2.1
-import math
+from math import sqrt
 class TriangleRectangle:
     def __init__(self,c1,c2):
         cote1 = c1
         cote2 = c2
         hypothenuse = sqrt(c1**2+c2**2)
+
+#exercice 2.2
+from math import sqrt
+
+class TriangleRectangle :
+    def __init__(self,c1,c2):
+        self.cote1 = c1
+        self.cote2 = c2
+        self.hypothenuse = sqrt(c1**2 + c2**2)
+    
+    def get_cote1(self):
+        return self.cote1
+    
+    def get_cote2(self):
+        return self.cote2
+    
+    def get_hypothenuse(self):
+        return self.hypothenuse
+    
+    def set_cote1(self,nv_c1):
+        self.cote1 = nv_c1
+        self.hypothenuse = sqrt(nv_c1**2 + self.cote2**2)
+        
+    def set_cote2(self,nv_c2):
+        self.cote2 = nv_c2
+        self.hypothenuse = sqrt(self.cote1**2 + nv_c2**2) 
