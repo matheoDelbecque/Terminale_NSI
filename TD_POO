@@ -58,3 +58,51 @@ class TriangleRectangle :
     def set_cote2(self,nv_c2):
         self.cote2 = nv_c2
         self.hypothenuse = sqrt(self.cote1**2 + nv_c2**2) 
+
+#exercice 4
+from math import sqrt
+
+class Point:
+    def __init__(self,x,y):
+        """
+        Description de la fonction : permet de définir les attributs de l'objet
+        x (int) : l'abscisse du point
+        y (int) : l'ordonnée du point
+        """
+        self.abscisse = x
+        self.ordonnée = y
+    
+    def __repr__(self):
+        """
+        Description de la fonction : permet d'afficher l'objet souhaité, ici de manière (x,y)
+        return (tuple) : l'objet sous forme (x,y)
+        """
+        return "(" + str(self.abscisse) + "," + str(self.ordonnée) + ")"
+    
+    def distance(self):
+        """
+        Description de la fonction : permet d'obtenir la distance entre un point et l'origine du repère
+        return (int) : la distance entre un point et l'origine du repère
+        """
+        return sqrt(self.abscisse**2 + self.ordonnée**2)
+
+A = Point(-2,5)
+print(A.distance())
+B = Point(5,5)
+print(B.distance())
+C = Point(-2,-2)
+print(C.distance())
+D = Point(5,-2)
+print(D.distance())
+
+def longueur_segment(A,B):
+    """
+    Description de la fonction : calcule la longueur entre 2 points
+    A (class_Point) : le point du début de segment
+    B (class_Point) : le point de fin de segment
+    return (int) : renvoie la longueur entre 2 points
+    """
+    return sqrt((A.abscisse - B.abscisse)**2 + (A.ordonnée - B.ordonnée)**2)
+
+print(longueur_segment(A,B))
+print(longueur_segment(C,D))
