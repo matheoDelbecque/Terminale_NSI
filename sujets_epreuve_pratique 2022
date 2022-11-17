@@ -66,6 +66,16 @@ def RechercheMinMax(tab):
 tableau = [0, 1, 4, 2, -2, 9, 3, 1, 7, 1]
 print(RechercheMinMax(tableau))
 
+#SUJET BAC 6
+#exercice 1
+def maxi(tab):
+    nb_max = tab[0],0
+    for i in range(len(tab)):
+        if tab[i] > nb_max[0]:
+            nb_max = tab[i],i
+    return nb_max
+print(maxi([1,5,6,9,1,2,3,7,9,8]))
+
 #SUJET BAC 15
 #exercice 1
 def nb_repetitions(elt,tab):
