@@ -106,3 +106,47 @@ def longueur_segment(A,B):
 
 print(longueur_segment(A,B))
 print(longueur_segment(C,D))
+
+#exercice 5
+#Première Partie
+
+class Fraction: 
+    def __init__(self,numerateur,denominateur):
+        self.num = numerateur
+        self.denom = denominateur
+    
+    def __repr__(self):
+        if self.denom == 1:
+            return str(self.num)
+        return str(self.num) + "/" + str(self.denom)
+    
+    def __eq__(self,f2):
+        return self.num * f2.denom == f2.num * self.denom
+    
+    def __lt__(self,f2):
+        return self.num/self.denom < f2.num/f2.denom
+    
+    def __add__(self,f2):
+        f3 = Fraction(self.num * f2.denom + f2.num * self.denom , self.denom * f2.denom)
+        return f3
+    
+    def __mul__(self,f2):
+        f3 = Fraction(self.num * f2.num , self.denom * f2.denom)
+        return f3
+
+f1 = Fraction(1,4)
+f2 = Fraction(2,8)
+
+print(f1)
+print(f1 == f2)
+print(f1 < f2)
+print(f1 + f2)
+print(f1 * f2)
+
+#Deuxième Partie
+
+def pgcd(a,b):
+    if b == 0:
+        return a
+    else:
+        return pgcd(b,a%b)
