@@ -150,3 +150,7 @@ def pgcd(a,b):
         return a
     else:
         return pgcd(b,a%b)
+
+def __init__(self,numerateur,denominateur):
+        self.num = numerateur // pgcd(numerateur,denominateur)
+        self.denom = denominateur // pgcd(numerateur,denominateur)
