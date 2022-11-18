@@ -59,6 +59,37 @@ class TriangleRectangle :
         self.cote2 = nv_c2
         self.hypothenuse = sqrt(self.cote1**2 + nv_c2**2) 
 
+#exercice 3
+import random
+class Personnage:
+
+    def __init__(self,nom_perso,points_de_vie):
+        self.nom = nom_perso
+        self.vie = points_de_vie
+
+    def perd_vie(self):
+        if random.random() < 0.5:
+            nbPoint = 1
+        else:
+            nbPoint = 2
+
+        self.vie = self.vie - nbPoint
+
+def game(p1,p2):
+    
+    while p1.vie > 0 and p2.vie > 0:
+        p1.perd_vie()
+        p2.perd_vie()
+
+    if p1.vie <= 0 and p2.vie > 0:
+        msg = p1.nom + "est vainqueur, il lui reste encore" + str(p1.vie) + " points alors que" + p2.nom + "est mort"
+    elif p2.vie <= 0 and p1.vie > 0:
+        msg = p2.nom + "est vainqueur, il lui reste encore" + str(p2.vie) + " points alors que" + p1.nom + "est mort"
+    else:
+        msg = "Les deux combattants sont morts en même temps"
+
+    return msg
+
 #exercice 4
 from math import sqrt
 
