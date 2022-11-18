@@ -152,5 +152,5 @@ def pgcd(a,b):
         return pgcd(b,a%b)
 
 def __init__(self,numerateur,denominateur):
-        self.num = numerateur // pgcd(numerateur,denominateur)
-        self.denom = denominateur // pgcd(numerateur,denominateur)
+        self.num = int(numerateur / pgcd(numerateur,denominateur))
+        self.denom = int(denominateur / pgcd(numerateur,denominateur))
