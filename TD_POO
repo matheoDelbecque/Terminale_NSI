@@ -62,33 +62,48 @@ class TriangleRectangle :
 #exercice 3
 import random
 class Personnage:
-
-    def __init__(self,nom_perso,points_de_vie):
+    
+    def __init__(self,nom_perso,points_de_vie,aptitude):
         self.nom = nom_perso
         self.vie = points_de_vie
+        self.aptitude_combat = self.__limiter_aptitude_combat(aptitude)
+    
+    def __limiter_aptitude_combat(self,aptitude):
+        if aptitude > 4:
+            return 4
+        else:
+            return aptitude
 
     def perd_vie(self):
-        if random.random() < 0.5:
-            nbPoint = 1
+        chance = random.random()
+        if chance * 10 > self.aptitude_combat:
+            if chance < 0.5:
+                nbPoint = 1
+                msg = self.nom + " perd 1 point de vie"
+            else:
+                nbPoint = 2
+                msg = self.nom + " perd 2 point de vie"
+            self.vie = self.vie - nbPoint
+            print(msg)
         else:
-            nbPoint = 2
-
-        self.vie = self.vie - nbPoint
+            msg = self.nom + " ne perd pas de point de vie"
+            print(msg)
 
 def game(p1,p2):
-    
     while p1.vie > 0 and p2.vie > 0:
         p1.perd_vie()
         p2.perd_vie()
-
     if p1.vie <= 0 and p2.vie > 0:
-        msg = p1.nom + "est vainqueur, il lui reste encore" + str(p1.vie) + " points alors que" + p2.nom + "est mort"
+        msg = p2.nom + " est vainqueur, il lui reste encore " + str(p2.vie) + " points alors que " + p1.nom + " est mort"
     elif p2.vie <= 0 and p1.vie > 0:
-        msg = p2.nom + "est vainqueur, il lui reste encore" + str(p2.vie) + " points alors que" + p1.nom + "est mort"
+        msg = p1.nom + " est vainqueur, il lui reste encore " + str(p1.vie) + " points alors que " + p2.nom + " est mort"
     else:
         msg = "Les deux combattants sont morts en même temps"
-
     return msg
+
+aragorn = Personnage("Aragorn", 10,10)
+orc = Personnage("Orc", 10,2)
+print(game(aragorn, orc))
 
 #exercice 4
 from math import sqrt
