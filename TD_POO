@@ -76,8 +76,13 @@ class Personnage:
 
     def perd_vie(self):
         chance = random.random()
-        if chance * 10 > self.aptitude_combat:
-            if chance < 0.5:
+        if chance < 0.1 :
+            nbPoint = 3
+            msg = self.nom + " à subit un coup critique et perd 3 points de vie"
+            self.vie = self.vie - nbPoint
+            print(msg)
+        elif chance * 10 > self.aptitude_combat:
+            if chance < 0.5 and chance > 0.1:
                 nbPoint = 1
                 msg = self.nom + " perd 1 point de vie"
             else:
@@ -101,8 +106,8 @@ def game(p1,p2):
         msg = "Les deux combattants sont morts en même temps"
     return msg
 
-aragorn = Personnage("Aragorn", 10,10)
-orc = Personnage("Orc", 10,2)
+aragorn = Personnage("Aragorn", 20,0)
+orc = Personnage("Orc", 10,4)
 print(game(aragorn, orc))
 
 #exercice 4
