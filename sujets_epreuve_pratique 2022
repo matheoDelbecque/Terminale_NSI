@@ -66,6 +66,55 @@ def RechercheMinMax(tab):
 tableau = [0, 1, 4, 2, -2, 9, 3, 1, 7, 1]
 print(RechercheMinMax(tableau))
 
+#exercice 2
+class Carte:
+    """Initialise Couleur (entre 1 à 4), et Valeur (entre 1 à 13)"""
+    def __init__(self, c, v):
+        assert c >= 1 and c <= 4, "le 1er paramètre (couleur) n'est pas compris entre 1 et 4"
+        assert v >= 1 and v <= 13, "le 2ème paramètre (valeur) n'est pas compris entre 1 et 13"
+        self.Couleur = c
+        self.Valeur = v
+
+    """Renvoie le nom de la Carte As, 2, ... 10, 
+       Valet, Dame, Roi"""
+    def getNom(self):
+        if ( self.Valeur > 1 and self.Valeur < 11):
+            return str( self.Valeur)
+        elif self.Valeur == 11:
+            return "Valet"
+        elif self.Valeur == 12:
+            return "Dame"
+        elif self.Valeur == 13:
+            return "Roi"
+        else:
+            return "As"
+
+    """Renvoie la couleur de la Carte (parmi pique, coeur, carreau, trefle"""
+    def getCouleur(self):
+        return ['pique', 'coeur', 'carreau', 'trefle' ][self.Couleur - 1]
+
+class PaquetDeCarte:
+    def __init__(self):
+        self.contenu = []
+
+    """Remplit le paquet de cartes"""
+    def remplir(self):
+        c = 1
+        while c < 5:
+            for v in range(13):
+                self.contenu = self.contenu + [Carte(c,v + 1)]
+            c = c + 1
+
+    """Renvoie la Carte qui se trouve à la position donnée"""
+    def getCarteAt(self, pos):
+        assert pos >= 1 and pos <= 52, "le paramètre n'est pas compris entre 1 et 52" 
+        return self.contenu[pos - 1]
+
+unPaquet = PaquetDeCarte()
+unPaquet.remplir()
+uneCarte = unPaquet.getCarteAt(20)
+print(uneCarte.getNom() + " de " + uneCarte.getCouleur())
+
 #SUJET BAC 6
 #exercice 1
 def maxi(tab):
