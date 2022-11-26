@@ -190,3 +190,21 @@ def mini(releve,date) :
     return t_min,date[ind_min]
 
 print(mini(t_moy,annees))
+
+#SUJET BAC 20
+#exercice 1
+def xor(tab1,tab2):
+    res = []
+    for i in range(len(tab1)):
+        if tab1[i] == tab2[i]:
+            res.append(0)
+        else :
+            res.append(1)
+    return res
+
+a = [1, 0, 1, 0, 1, 1, 0, 1] 
+b = [0, 1, 1, 1, 0, 1, 0, 0]
+c = [1, 1, 0, 1]
+d = [0, 0, 1, 1]
+assert(xor(a, b) == [1, 1, 0, 1, 1, 0, 0, 1])
+assert(xor(c, d) == [1, 1, 1, 0])
