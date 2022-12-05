@@ -1,0 +1,49 @@
+from ma_pile import creer_pile, est_vide, empiler, depiler, afficher_pile
+
+#exercice 1
+#3)
+def pile_alternee(n):
+    p = creer_pile()
+    for i in range(n+1):
+        if i % 2 == 0:
+            empiler(p,i)
+        else :
+            empiler(p,-i)
+    return p
+
+afficher_pile(pile_alternee(6))
+
+#exercice 2
+
+def vider_pile(p):
+    while est_vide(p) == False:
+        depiler(p)
+
+def sommet_pile(p):
+    if est_vide(p) == True:
+        return None
+    k = depiler(p)
+    empiler(p,k)
+    return k
+
+def taille_pile(p):
+    res = 0
+    if est_vide(p) == True:
+        return res
+    p2 = creer_pile()
+    while est_vide(p) == False:
+        empiler(p2,depiler(p))
+        res = res + 1
+    while est_vide(p2) == False:
+        empiler(p,depiler(p2))
+    return res
+
+def inverser_pile(p):
+    p2 = creer_pile()
+    p3 = creer_pile()
+    while est_vide(p) == False:
+        empiler(p2,depiler(p))
+    while est_vide(p2) == False:
+        empiler(p3,depiler(p2))
+    while est_vide(p3) == False:
+        empiler(p,depiler(p3))
