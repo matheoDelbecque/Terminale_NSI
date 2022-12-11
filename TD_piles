@@ -47,3 +47,22 @@ def inverser_pile(p):
         empiler(p3,depiler(p2))
     while est_vide(p3) == False:
         empiler(p,depiler(p3))
+
+#exercice 3
+
+def est_bien_parenthesee(chaine):
+    p = creer_pile()
+    for e in chaine:
+        if e == "(":
+            empiler(p,e)
+        elif e == ")":
+            if est_vide(p) == False:
+                depiler(p)
+            else:
+                return False
+    if est_vide(p) == False:
+        return False
+    return True
+print(est_bien_parenthesee("(8*(4/(1+2))+(5*2))"))
+print(est_bien_parenthesee("(12+(3*(2+3))"))
+print(est_bien_parenthesee("(2+3)*5)+(7"))
