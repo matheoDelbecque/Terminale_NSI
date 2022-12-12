@@ -90,3 +90,63 @@ def evaluer_postfixee(chaine):
         else:
             empiler(pile,eval(str(depiler(pile)) + e + str(depiler(pile))))
     return depiler(pile)
+
+#exercice 6
+
+class Pile:
+    def __init__(self,nb_max):
+        self.contenue = [None] * nb_max
+        self.taille_max = nb_max
+        self.taille = self.taille_pile()
+    
+    def est_vide(self):
+        for e in self.contenue:
+            if e != None:
+                return False
+        return True
+    
+    def empiler(self,e):
+        assert None in self.contenue, "Erreur = la pile est remplie"
+        i = 0
+        while i < self.taille_max:
+             if self.contenue[i] == None:
+                  self.contenue[i] = e
+             else:
+                  i = i + 1
+    
+    def depiler(self):
+        assert not(self.est_vide()), "Erreur = la pile est vide"
+        i = 0
+        while i < self.taille_max:
+             if self.contenue[i] == None:
+                  res = self.contenue.pop(i-1)
+             else:
+                  i = i + 1
+        return res
+    
+    def taille_pile(self):
+        i = 0
+        res = 0
+        while i < self.taille_max:
+            if self.contenue[i] != None:
+                res = res + 1
+                i = i + 1
+            else :
+                return res
+p1 = Pile(4)
+p1.est_vide()
+p1.empiler("5")
+p1.depiler()
+p1.taille
+
+##%%time
+##p1 = creer_pile()
+##for i in range(10000):
+##    empiler(p1, i)
+##    taille_pile(p1)
+##
+##%%time
+##p2 = Pile(10000)
+##for i in range(10000):
+##    p2.empiler(i)
+##    p2.taille_pile()
