@@ -63,6 +63,30 @@ def est_bien_parenthesee(chaine):
     if est_vide(p) == False:
         return False
     return True
-print(est_bien_parenthesee("(8*(4/(1+2))+(5*2))"))
-print(est_bien_parenthesee("(12+(3*(2+3))"))
-print(est_bien_parenthesee("(2+3)*5)+(7"))
+
+#exercice 4
+
+def separer_postfixee(chaine):
+    return chaine.split(' ')
+
+def est_operateur(str):
+    for e in str:
+        if (e == "+" or e == "-") or (e == "*" or e == "/"):
+            return True
+        else:
+            return False
+
+def evaluer_postfixee(chaine):
+    pile = creer_pile()
+    pile2 = creer_pile()
+    liste = separer_postfixee(chaine)
+    for e in liste:
+        if est_operateur(e) == False:
+            empiler(pile,e)
+        elif e == "-":
+            for i in range(2):
+                empiler(pile2,depiler(pile))
+            empiler(pile,eval(str(depiler(pile2)) + e + str(depiler(pile2))))
+        else:
+            empiler(pile,eval(str(depiler(pile)) + e + str(depiler(pile))))
+    return depiler(pile)
