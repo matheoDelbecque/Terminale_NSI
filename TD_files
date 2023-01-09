@@ -128,3 +128,30 @@ f.enfile(1)
 f.enfile(2)
 f.enfile(3)
 print(enlever_fin(f))
+
+
+
+from pile import *
+#exercice 6
+class File:
+    def __init__(self):
+        self.entree = Pile()
+        self.sortie = Pile()
+    
+    def est_vide(self):
+        return self.entree.est_vide() and self_sortie.est_vide()
+    
+    def enfile(self,x):
+        self.entree.empile(x)
+    
+    def defile(self):
+        if self.sortie.est_vide() == True:
+            while self.entree.est_vide() != True:
+                self.sortie.empile(self.entree.depile())
+        return self.sortie.depile()
+
+f = File()
+f.enfile(1)
+f.enfile(2)
+print(f.defile())
+print(f.defile())
