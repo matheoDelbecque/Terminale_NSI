@@ -45,10 +45,15 @@ class Pile2:
 
     def depile(self):
         assert not self.est_vide(), "Vous avez essayé de dépiler une pile vide !"
-        return self.data.pop()
+        return self.data.pop(0)
 
     def __repr__(self):       # Hors-Programme : pour afficher convenablement la pile
         s = "".center(5, "-") + "\n"              
         for i in range(len(self.data)-1, -1, -1) :
             s = s + str(self.data[i]).center(5) + "\n" + "".center(5, "-") + "\n"
         return s
+
+pile=Pile2()
+pile.empile(1)
+pile.empile(2)
+print(pile)
