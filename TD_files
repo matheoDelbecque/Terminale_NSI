@@ -110,3 +110,21 @@ f2 = File2()
 f2.enfile(5)
 f2.enfile(3)
 f2.enfile(7)
+
+#exercice 5
+def enlever_fin(f):
+    f2 = File()
+    nb = 0
+    while f.est_vide() != True:
+        f2.enfile(f.defile())
+        nb = nb + 1
+    while nb != 1:
+        f.enfile(f2.defile())
+        nb = nb - 1
+    return f
+
+f = File()
+f.enfile(1)
+f.enfile(2)
+f.enfile(3)
+print(enlever_fin(f))
