@@ -1,0 +1,74 @@
+#exercice 4
+#Activité 1
+class File:
+    def __init__(self): # Les éléments sont stockés dans une liste python
+        self.data = []
+      
+    def est_vide(self):
+        return len(self.data) == 0 
+    
+    # Le choix suivant a été fait : La tête de la file correspond au premier élément de la liste 
+    #                               (et la queue au dernier élément de la liste)
+    
+    def enfile(self,x):
+        self.data.append(x)
+
+    def defile(self):
+        assert not self.est_vide(), "Vous avez essayé de défiler une file vide !"
+        x = self.data[0]
+        self.data = self.data[1:self.taille()]
+        return x
+    
+    def taille(self):
+        return len(self.data)
+
+    def __repr__(self):       # pour afficher convenablement la file             
+        """
+        Affiche le contenu d'une file
+        La tête de file est affichée à gauche et la queue à droite
+        """
+        s = "|"
+        for i in range(len(self.data)) :
+            s = s + str(self.data[i]) + "|"
+        return s
+
+#Activité :
+class File2:
+    def __init__(self): # Les éléments sont stockés dans une liste python
+        self.data = []
+      
+    def est_vide(self):
+        return len(self.data) == 0 
+    
+    # Le choix suivant a été fait : La tête de la file correspond au dernier élément de la liste 
+    #                               (et la queue au premier élément de la liste)
+    
+    def enfile(self,x):
+        self.data.insert(0,x)
+
+    def defile(self):
+        assert not self.est_vide(), "Vous avez essayé de défiler une file vide !"
+        return self.data.pop(self.taille()-1)
+    
+    def taille(self):
+        return len(self.data)
+
+    def __repr__(self):       # pour afficher convenablement la file             
+        """
+        Affiche le contenu d'une file
+        La tête de file est affichée à gauche et la queue à droite
+        """
+        s = "|"
+        for i in range(len(self.data)-1, -1, -1) :
+            s = s + str(self.data[i]) + "|"
+        return s
+
+f = File()
+f.enfile(5)
+f.enfile(3)
+f.enfile(7)
+
+f2 = File2()
+f2.enfile(5)
+f2.enfile(3)
+f2.enfile(7)
