@@ -1,3 +1,41 @@
+#exercice 2
+def inverse_file(f):
+    p = Pile()
+    while f.est_vide() != True:
+        p.empile(f.defile())
+    while p.est_vide() != True:
+        f.enfile(p.depile())
+    return f
+
+f=File()
+f.enfile(1)
+f.enfile(2)
+f.enfile(3)
+f.enfile(4)
+print(inverse_file(f))
+
+
+#exercice 3
+def paire_impaire(f):
+    f_paire = File()
+    f_impaire = File()
+    while f.est_vide() != True:
+        x = f.defile()
+        if x % 2 == 0:
+            f_paire.enfile(x)
+        else:
+            f_impaire.enfile(x)
+    return (f_paire,f_impaire)
+
+f = File()
+f.enfile(1)
+f.enfile(2)
+f.enfile(3)
+f.enfile(4)
+f.enfile(5)
+f.enfile(6)
+print(paire_impaire(f))
+
 #exercice 4
 #Activité 1
 class File:
@@ -72,19 +110,3 @@ f2 = File2()
 f2.enfile(5)
 f2.enfile(3)
 f2.enfile(7)
-
-#exercice 2
-def inverse_file(f):
-    p = Pile()
-    while f.est_vide() != True:
-        p.empile(f.defile())
-    while p.est_vide() != True:
-        f.enfile(p.depile())
-    return f
-
-f=File()
-f.enfile(1)
-f.enfile(2)
-f.enfile(3)
-f.enfile(4)
-print(inverse_file(f))
