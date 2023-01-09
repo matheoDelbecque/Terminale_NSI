@@ -72,3 +72,19 @@ f2 = File2()
 f2.enfile(5)
 f2.enfile(3)
 f2.enfile(7)
+
+#exercice 2
+def inverse_file(f):
+    p = Pile()
+    while f.est_vide() != True:
+        p.empile(f.defile())
+    while p.est_vide() != True:
+        f.enfile(p.depile())
+    return f
+
+f=File()
+f.enfile(1)
+f.enfile(2)
+f.enfile(3)
+f.enfile(4)
+print(inverse_file(f))
