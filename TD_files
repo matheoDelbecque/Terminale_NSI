@@ -155,3 +155,38 @@ f.enfile(1)
 f.enfile(2)
 print(f.defile())
 print(f.defile())
+
+#exercice 7
+
+f1 = File()
+f1.enfile(0)
+f1.enfile(1)
+f1.enfile(1)
+f1.enfile(0)
+f1.enfile(1)
+
+f2 = File()
+f2.enfile(0)
+f2.enfile(2)
+f2.enfile(2)
+f2.enfile(2)
+f2.enfile(0)
+f2.enfile(2)
+f2.enfile(0)
+
+def croisement(f1,f2):
+    f3 = File()
+    while f1.est_vide() != True or f2.est_vide() != True:
+        if f1.tete() == 0 and f2.tete() == 0:
+            f3.enfile(f1.defile())
+            f2.defile()
+        elif f1.tete() == 1 and f2.tete() == 2:
+            while f1.tete() == 1:
+                f3.enfile(f1.defile())
+        elif f1.tete() == 1 and f2.tete() == 0:
+            f3.enfile(f1.defile())
+            f2.defile()
+        elif f1.tete() == 0 and f2.tete() == 2:
+            f3.enfile(f2.defile())
+            f1.defile()
+    return f3
