@@ -139,7 +139,7 @@ class File:
         self.sortie = Pile()
     
     def est_vide(self):
-        return self.entree.est_vide() and self_sortie.est_vide()
+        return self.entree.est_vide() and self.sortie.est_vide()
     
     def enfile(self,x):
         self.entree.empile(x)
