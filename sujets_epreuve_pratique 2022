@@ -225,9 +225,9 @@ print(mini(t_moy,annees))
 def multiplication(n1,n2):
     x = 0
     if n1 < 0 and n2 < 0:
-        n1 = n1 - n1 - n1
+        n1 = abs(n1)
     if n2 < 0:
-        n2 = n2 - n2 - n2
+        n2 = abs(n2)
     while n2 != 0:
         x = x + n1
         n2 = n2 - 1
