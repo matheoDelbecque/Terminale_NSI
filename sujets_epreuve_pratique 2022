@@ -233,6 +233,21 @@ def multiplication(n1,n2):
         n2 = n2 - 1
     return x
 
+#exercice 2
+def chercher(T,n,i,j):
+    if i < 0 or len(T) < j :
+        print("Erreur")
+        return None 
+    if i > j :
+        return None
+    m = (i+j) // 2
+    if T[m] < n :
+        return chercher(T, n, m, j)
+    elif T[m] > n :
+        return chercher(T, n, i, m)
+    else :
+        return m
+
 #SUJET BAC 20
 #exercice 1
 def xor(tab1,tab2):
