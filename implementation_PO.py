@@ -180,7 +180,20 @@ class Arbre:
         return (bool) : True si les deux arbres sont identiques, False sinon 
         
         TESTS :
-        >>> 
+        >>> A1 = Arbre(Noeud(3,Noeud(4,None,None),Noeud(2,None,None)))
+        >>> A2 = Arbre(Noeud(3,Noeud(7,None,None),Noeud(5,None,None)))
+        >>> A1.est_egal(A2)
+        False
+        
+        >>> A1 = Arbre(Noeud(3,Noeud(4,None,None),Noeud(2,None,None)))
+        >>> A2 = Arbre(Noeud(3,Noeud(4,None,None),Noeud(2,None,None)))
+        >>> A1.est_egal(A2)
+        True
+        
+        >>> A1 = Arbre(Noeud(3,Noeud(4,None,None),Noeud(2,None,None)))
+        >>> A2 = Arbre()
+        >>> A1.est_egal(A2)
+        False
         '''
         if self.est_vide() and arbre.est_vide():
             return True
@@ -202,8 +215,14 @@ def cree_arbre_complet(h, maxi):
     maxi (int) : valeur maximale des noeuds
     return (Arbre) : arbre créé
     '''
-    #A compléter   
-        
+    if h == -1 :
+        return Arbre()
+    elif h == 0 :
+        return Arbre(Noeud(randint(0,maxi),None,None))
+    else :
+        return Arbre(Noeud(randint(0,maxi),cree_arbre_complet(h-1, maxi).racine,cree_arbre_complet(h-1, maxi).racine))
+    
+
 def cree_peigne_gauche(h, maxi):
     '''
     DOCUMENTATION :
@@ -213,7 +232,12 @@ def cree_peigne_gauche(h, maxi):
     maxi (int) : valeur maximale des noeuds
     return (Arbre) : arbre créé
     '''
-    #A compléter 
+    if h == -1 :
+        return Arbre()
+    elif h == 0 :
+        return Arbre(Noeud(randint(0,maxi),None,None))
+    else :
+        return Arbre(Noeud(randint(0,maxi),cree_peigne_gauche(h-1, maxi).racine,None))
 
 def cree_peigne_droit(h, maxi):
     '''
@@ -224,7 +248,12 @@ def cree_peigne_droit(h, maxi):
     maxi (int) : valeur maximale des noeuds
     return (Arbre) : arbre créé
     '''
-    #A compléter 
+    if h == -1 :
+        return Arbre()
+    elif h == 0 :
+        return Arbre(Noeud(randint(0,maxi),None,None))
+    else :
+        return Arbre(Noeud(randint(0,maxi),None,cree_peigne_droit(h-1, maxi).racine))
 
 if __name__ == '__main__':
     # PARTIE 1 - TRAVAIL PRELIMINAIRE Question 2
@@ -242,16 +271,21 @@ if __name__ == '__main__':
     # PARTIE 2 - Question 3
             
     # Creation d'un arbre complet de hauteur 3
-        # A compléter
-        
+    arbre_complet = cree_arbre_complet(3,9)
+    show(arbre_complet,"arbre_complet_hauteur_3")
+    
     # Creation d'un peigne gauche de hauteur 3
-        # A compléter
+    arbre_peigne_gauche = cree_peigne_gauche(3,9)
+    show(arbre_peigne_gauche,"peigne_gauche_hauteur_3")
         
     # Creation d'un peigne droit de hauteur 3
-         # A compléter
+    arbre_peigne_droit = cree_peigne_droit(3,9)
+    show(arbre_peigne_droit,"peigne_droit_hauteur_3")
 
     # PARTIE 2 - Question 4
-        # A compléter
+    arbre_vide = Arbre()
+    arbre_vide.valeur_racine()
+    # cela renvoie l'erreur d'assertion établie avant
     
     # Lancement des tests (laisser ces deux lignes de code inchangées)
     import doctest
