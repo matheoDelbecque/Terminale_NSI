@@ -1,0 +1,60 @@
+def tri_fusion(liste):
+    """
+    Description de la fonction : trie une liste d\'entier de manière croissant
+    liste (list) : la liste à trier
+    return (list) : la même liste mais triée
+    """
+    if len(liste) < 2 : #cas de base
+        return liste
+    else :
+        liste1, liste2 = coupe(liste) #Etape 1
+        liste1 = tri_fusion(liste1) #Etape 2
+        liste2 = tri_fusion(liste2)
+        return fusion_recursif(liste1, liste2) #Etape 3
+
+def coupe(liste):
+    """
+    Description de la fonction : coupe une liste en deux
+    liste (list) : une liste à couper en deux
+    return (tuple) : un tuple comprenant les 2 moitiés de la liste de départ
+    """
+    return liste[0:len(liste)//2], liste[len(liste)//2:len(liste)]
+    
+
+def fusion_itératif(liste1, liste2):
+    """
+    Description de la fonction : fusionne et trie dans l'ordre croissant un tuple de deux liste.
+    liste1 (list) : la première liste à fusionner
+    liste2 (list) : la deuxième liste à fusionner
+    return (list) : les deux liste du tuple de départ fusionées et triées
+    """
+    i,j = 0, 0
+    liste = []
+    while i < len(liste1) and j < len(liste2):
+        if liste1[i] < liste2[j] :
+            liste.append(liste1[i])
+            i = i + 1
+        else :
+            liste.append(liste2[j])
+            j = j + 1
+    while i < len(liste1):
+        liste.append(liste1[i])
+        i = i + 1
+    while j < len(liste2):
+        liste.append(liste2[j])
+        j = j + 1
+    return liste
+#print(fusion_itératif([27,38,43], [3,9,10,82]))
+
+def fusion_recursif(liste1, liste2):
+    if liste1 == [] :
+        return liste2
+    elif liste2 == [] :
+        return liste1
+    elif liste1[0] < liste2[0] :
+        return  [liste1[0]] + fusion_recursif(liste1[1:], liste2)
+    else :
+        return [liste2[0]] + fusion_recursif(liste2[1:], liste1)
+#print(fusion_recursif([27,38,43], [3,9,10,82]))
+
+print(tri_fusion([38, 27, 43, 3, 9, 82, 10]))
