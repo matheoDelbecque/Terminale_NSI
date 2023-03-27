@@ -1,0 +1,251 @@
+from random import randint
+from math import sqrt
+
+# https://pixees.fr/informatiquelycee/term/ep/index.html
+
+#TP 1
+#ex 1
+def verifie(tab):
+    for i in range(len(tab)-1):
+        if tab[i] > tab[i+1]:
+            return False
+    return True
+
+#ex 2
+def depouille(urne):
+    resultat = {}
+    for bulletin in urne:
+        if bulletin in resultat:
+            resultat[bulletin] = resultat[bulletin] + 1
+        else:
+            resultat[bulletin] = 1
+    return resultat
+
+
+def vainqueur(election):
+    vainqueur = ''
+    nmax = 0
+    for candidat in election:
+        if election[candidat] > nmax :
+            nmax = election[candidat]
+            vainqueur = candidat
+    liste_finale = [nom for nom in election if election[nom] == nmax]
+    return liste_finale
+
+#TP 2
+#EX 1
+def indices_maxi(tab):
+    l = []
+    nb = tab[0]
+    for i in range(len(tab)):
+        if tab[i] > nb:
+            l = [i]
+            nb = tab[i]
+        elif tab[i] == nb:
+            l.append(i)
+    return nb, l
+
+#ex 2
+def positif(pile):
+    pile_1 = list(pile)
+    pile_2 = []
+    while pile_1 != []:
+        x = pile_1.pop()
+        if x >= 0:
+            pile_2.append(x)
+    while pile_2 != []:
+        x = pile_2.pop()
+        pile_1.append(x)
+    return pile_1
+
+#TP 3 
+#EX 1
+def moyenne(l):
+    coef = 0
+    note = 0
+    for e in l:
+        coef = coef + e[1]
+        note = note + e[0]*e[1]
+    if coef == 0:
+        return None
+    return note/coef
+
+#ex 2
+def affiche(dessin):
+    ''' affichage d'une grille : les 1 sont représentés par
+    des " *" , les 0 par deux espaces " ".
+    La valeur "" donnée au paramètre end permet de ne pas avoir
+    de saut de ligne.'''
+    for ligne in dessin:
+        for col in ligne:
+            if col == 1:
+                print(" *", end= "")
+            else:
+                print(" ", end= "")
+        print()
+
+def zoomListe(liste_depart, k):
+    '''renvoie une liste contenant k fois chaque
+    élément de liste_depart'''
+    liste_zoom = []
+    for elt in liste_depart :
+        for i in range(k):
+            liste_zoom.append(elt)
+    return liste_zoom
+
+def zoomDessin(grille, k):
+    '''renvoie une grille où les lignes sont zoomées k fois
+    ET répétées k fois'''
+    grille_zoom = []
+    for elt in grille:
+        liste_zoom = zoomListe(elt,k)
+        for i in range(k):
+            grille_zoom.append(liste_zoom)
+    return grille_zoom
+
+#TP 4
+#EX 1
+def a_doublon(l):
+    for i in range(len(l)-1):
+        if l[i] == l[i+1]:
+            return True
+    return False
+
+#ex 2
+def voisinage(n, ligne, colonne):
+    """ Renvoie la liste des coordonnées des voisins de la case
+    (ligne, colonne) en gérant les cases sur les bords. """
+    voisins = []
+    for l in range(max(0,ligne-1), min(n, ligne+2)):
+        for c in range(max(0, colonne-1), min(n, colonne+2)):
+            if (l, c) != (ligne, colonne):
+                voisins.append((l,c))
+    return voisins
+
+def incremente_voisins(grille, ligne, colonne):
+    """ Incrémente de 1 toutes les cases voisines d'une bombe.
+    """
+    voisins = voisinage(len(grille) , ligne, colonne)
+    for l, c in voisins:
+        if grille[l][c] != -1:          # si ce n'est pas une bombe
+            grille[l][c] = grille[l][c] + 1                          # on ajoute 1 à sa valeur
+
+def genere_grille(bombes):
+    """ Renvoie une grille de démineur de taille nxn où n est
+    le nombre de bombes, en plaçant les bombes à l\'aide de
+    la liste bombes de coordonnées (tuples) passée en
+    paramètre. """
+    n = len(bombes)
+    # Initialisation d'une grille nxn remplie de 0
+    grille = [[0 for colonne in range(n)] for ligne in range(n)]
+    # Place les bombes et calcule les valeurs des autres cases
+    for ligne, colonne in bombes:
+        grille[ligne][colonne] = -1        # place la bombe
+        incremente_voisins(grille, ligne, colonne)                                 # incrémente ses voisins
+    return grille
+
+#TP 5
+#ex 1
+def lancer(n):
+    res = []
+    for i in range(n):
+        res.append(randint(1,6))
+    return res
+
+def paire_6(tab):
+    nb_6 = 0
+    for e in tab:
+        if e == 6:
+            nb_6 = nb_6 + 1
+    if nb_6 >= 2:
+        return True
+    return False
+
+#ex 2
+def nbLig(image):
+    '''renvoie le nombre de lignes de l'image'''
+    return len(image)
+
+def nbCol(image):
+    '''renvoie la largeur de l'image'''
+    return len(image[0])
+
+def negatif(image):
+    '''renvoie le négatif de l'image sous la forme
+    d'une liste de listes'''
+    # on créé une image de 0 aux mêmes dimensions que le paramètre image
+    L = [[0 for k in range(nbCol(image))] for i in range(nbLig(image))]
+    for i in range(nbLig(image)):
+        for j in range(nbCol(image)):
+            L[i][j] = 255 - image[i][j]
+    return L
+
+def binaire(image, seuil):
+    '''renvoie une image binarisée de l'image sous la forme
+    d'une liste de listes contenant des 0 si la valeur
+    du pixel est strictement inférieure au seuil
+    et 1 sinon'''
+    # on crée une image de 0 aux mêmes dimensions que le paramètre image
+    L = [[0 for k in range(nbCol(image))] for i in range(nbLig(image))]
+    for i in range(nbLig(image)):
+        for j in range(nbCol(image)):
+            if image[i][j] < seuil :
+                L[i][j] = 0
+            else:
+                L[i][j] = 1
+    return L
+
+#TP6
+#ex1
+def recherche(tab, n):
+    res = len(tab)
+    for i in range(len(tab)):
+        if tab[i] == n:
+            res = i
+    return res
+
+#ex2
+def distance(point1, point2):
+    """ Calcule et renvoie la distance entre deux points. """
+    return sqrt((point1[0] - point2[0])**2 + (point1[1] - point2[1])**2)
+
+def plus_courte_distance(tab, depart):
+    """ Renvoie le point du tableau tab se trouvant à la plus
+    courte distance du point depart."""
+    point = tab[0]
+    min_dist = distance(point,depart)
+    for i in range (1, len(tab)):
+        if distance(tab[i], depart) < min_dist:
+            point = tab[i]
+            min_dist = distance(tab[i], depart)
+    return point
+
+#TP7
+#ex1
+def fusion(tab1, tab2):
+    res = []
+    while tab1 != [] and tab2 != []:
+        if tab1[0] < tab2[0]:
+            res.append(tab1.pop(0))
+        else :
+            res.append(tab2.pop(0))
+    if tab1 != []:
+        while tab1 != []:
+            res.append(tab1.pop(0))
+    else :
+        while tab2 != []:
+            res.append(tab2.pop(0))
+    return res
+
+#ex2
+romains = {"I":1, "V":5, "X":10, "L":50, "C":100, "D":500, "M":1000}
+
+def traduire_romain(nombre):
+    """ Renvoie l’écriture décimale du nombre donné en chiffres
+    romains """
+    if len(nombre) == 1:
+        return ...
+    elif romains[nombre[0]] >= ...
+        return romains[nombre[0]] + ...
+    else:
+        return ...
