@@ -521,3 +521,121 @@ def est_palindrome(chaine):
 def est_nbre_palindrome(nbre):
     chaine = str(nbre)
     return est_palindrome(chaine)
+
+#TP 16
+#ex 1
+def recherche_indices_classement(elt,tab):
+    inf = []
+    ega = []
+    sup = []
+    for i in range(len(tab)):
+        if tab[i] < elt:
+            inf.append(i)
+        elif tab[i] == elt:
+            ega.append(i)
+        else:
+            sup.append(i)
+    return inf, ega, sup
+
+#ex2
+resultats = {'Dupont': {
+                           'DS1': [15.5, 4],
+                           'DM1': [14.5, 1],
+                           'DS2': [13, 4],
+                           'PROJET1': [16, 3],
+                           'DS3': [14, 4]
+                       },
+             'Durand': {
+                           'DS1': [6 , 4],
+                           'DM1': [14.5, 1],
+                           'DS2': [8, 4],
+                           'PROJET1': [9, 3],
+                           'IE1': [7, 2],
+                           'DS3': [8, 4],
+                           'DS4':[15, 4]
+                       }
+            }
+
+def moyenne(nom, dico_result):
+    if nom in dico_result:
+        notes = dico_result[nom]
+        total_points = 0
+        total_coefficients = 0
+        for valeurs in notes.values():
+            note, coefficient = valeurs
+            total_points = total_points + note * coefficient
+            total_coefficients = total_coefficients + coefficient
+        return round( total_points / total_coefficients, 1 )
+    else:
+        return -1
+
+#TP 17
+#ex 1
+def moyenne(tab):
+    points = 0
+    coef = 0
+    for e in tab:
+        n, c = e
+        points = points + n * c
+        coef = coef + c
+    return points/coef
+
+#ex 2
+def pascal(n):
+    triangle= [[1]]
+    for k in range(1, n+1):
+        ligne_k = [1]
+        for i in range(1,k):
+            ligne_k.append(triangle[k-1][i-1]+triangle[k-1][i])
+        ligne_k.append(1)
+        triangle.append(ligne_k)
+    return triangle
+
+#TP 18
+#ex 1
+def max_et_indice(tab):
+    """
+    description : permet d'avoir la avleur max d'une liste et son indice
+    tab (list) : la liste dans laquelle on cherche
+    return (tuple) : la valeur max de la liste et son indice
+    """
+    assert tab != [], "Erreur, liste vide"
+    nb_max = tab[0]
+    ind = 0
+    for i in range(len(tab)):
+        if tab[i] > nb_max:
+            nb_max = tab[i]
+            ind = i
+    return nb_max, ind
+max_et_indice([1, 5, 6, 9, 1, 2, 3, 7, 9, 8])
+
+#ex 2
+def est_un_ordre(tab):
+    '''
+    Renvoie True si tab est de longueur n et contient tous les entiers
+    de 1 Ã   n, False sinon
+    '''
+    for i in range(1,len(tab)+1):
+        if i not in tab:
+            return False
+    return True
+
+
+def nombre_points_rupture(ordre):
+    '''
+    Renvoie le nombre de point de rupture de ordre qui reprÃ©sente un ordre
+    de gÃ¨nes de chromosome
+    '''
+    assert est_un_ordre(ordre) == True, "Erreur" # ordre n'est pas un ordre de gÃƒÂ¨nes
+    n = len(ordre)
+    nb = 0
+    if ordre[0] != 1: # le premier n'est pas 1
+        nb = nb + 1
+    i = 0
+    while i < len(ordre)-1:
+        if (ordre[i+1] - ordre[i]) not in [-1, 1]: # l'ÃƒÂ©cart n'est pas 1
+            nb = nb + 1
+        i = i + 1
+    if ordre[n-1] != n: # le dernier n'est pas n
+        nb = nb + 1
+    return nb
