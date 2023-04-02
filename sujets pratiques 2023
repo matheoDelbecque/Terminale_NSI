@@ -249,3 +249,275 @@ def traduire_romain(nombre):
         return romains[nombre[0]] + traduire_romain(nombre[1:])
     else:
         return traduire_romain(nombre[1:]) - romains[nombre[0]]
+
+#TP 8
+#ex 1
+def max_dico(dico):
+    res = ()
+    valeur = 0
+    for e in dico.keys():
+        if dico[e] > valeur :
+            valeur = dico[e]
+            res = (e, dico[e])
+    return res
+
+#ex 2
+class Pile:
+    """
+    Classe définissant une structure de pile.
+    """
+    def __init__(self):
+        self.contenu = []
+        
+    def est_vide(self):
+        """
+        Renvoie le booléen True si la pile est vide, False sinon.
+        """
+        return self.contenu == []
+
+    def empiler(self, v):
+        """
+        Place l’élément v au sommet de la pile.
+        """
+        self.contenu.append(v)
+        
+    def depiler(self):
+        """
+        Retire et renvoie l’élément placé au sommet de la pile,
+        si la pile n’est pas vide.
+        """
+        if not self.est_vide():
+            return self.contenu.pop()
+        
+        
+def eval_expression(tab):
+    p = Pile()
+    for element in tab:
+        if element != '+' and element != '*':
+            p.empiler(element)
+        else:
+            if element == '+':
+                resultat = p.depiler() + p.depiler()
+            else:
+                resultat = p.depiler() * p.depiler()
+            p.empiler(resultat)
+    return p.depiler()
+
+#TP 9
+#ex 1
+def multiplication(n1, n2):
+    res = 0
+    if n1 == 0 or n2 == 0:
+        return res
+    elif n1 >= 0 and n2 >= 0:
+        for i in range(n2):
+            res = res + n1
+    elif n1 < 0 and n2 < 0:
+        for i in range(abs(n2)):
+            res = res + abs(n1)
+    else :
+        for i in range(abs(n2)):
+            res = res + abs(n1)
+        res = -res
+    return res
+
+#ex 2
+def chercher(tab, n, i, j):
+    if i < 0 or j > len(tab):
+        return None
+    elif i > j:
+        return None
+    m = (i + j) // 2
+    if tab[m] < n:
+        return chercher(tab, n, m, j)
+    elif tab[m] > n:
+        return chercher(tab, n, i, m)
+    else:
+        return m
+
+#TP 10
+#ex 1
+def maxliste(tab):
+    res = tab[0]
+    for e in tab:
+        if e > res :
+            res = e
+    return res
+
+#ex 2
+class Pile:
+    """
+    Classe definissant une pile
+    """
+    def __init__(self):
+        self.valeurs = []
+
+    def est_vide(self):
+        """
+        Renvoie True si la pile est vide, False sinon
+        """
+        return self.valeurs == []
+
+    def empiler(self, c):
+        """
+        Place l'element c au sommet de la pile
+        """
+        self.valeurs.append(c)
+
+    def depiler(self):
+        """
+        Supprime l'element place au sommet de la pile, a condition qu'elle soit non vide
+        """
+        if self.est_vide() == False:
+            self.valeurs.pop()
+
+
+def parenthesage(ch):
+    """
+    Renvoie True si la chaine ch est bien parenthesee et False sinon
+    """
+    p = Pile()
+    for c in ch:
+        if c == '(':
+            p.empiler(c)
+        elif c == ')':
+            if p.est_vide():
+                return False
+            else:
+                p.depiler()
+    return p.est_vide()
+
+#TP 11
+#ex 1
+def convertir(tab):
+    """
+    tab est un tableau d'entiers, dont les éléments sont 0 ou 1,
+    et représentant un entier écrit en binaire.
+    Renvoie l'écriture décimale de l'entier positif dont la
+    représentation binaire est donnée par le tableau tab
+    """
+
+    res = 0
+    nb = 0
+    for i in range(len(tab)-1,-1,-1):
+        if tab[i] == 1:
+            res = res + 2**nb
+        nb = nb + 1
+    return res
+
+#ex 2
+def tri_insertion(tab):
+    n = len(tab)
+    for i in range(1, n):
+        valeur_insertion = tab[i]
+        #la variable j est utilisée pour déterminer où placer la
+        #valeur à insérer
+        j = i
+        #tant qu'on a pas trouvé la place de l'élément à insérer
+        #on décale les valeurs du tableau vers la droite
+        while j > 0 and valeur_insertion < tab[j-1]:
+            tab[j] = tab[j-1]
+            j = j - 1
+        tab[j] = valeur_insertion
+
+#TP 12
+#ex 1
+def ajoute(cle, a):
+    if a is None:
+        return ABR(None, cle, None)
+    elif cle == a.cle:
+        return a
+    elif cle < a.cle:
+        return ABR(ajoute(cle, a.gauche), a.cle, a.droit)
+    else:
+        return ABR(a.gauche, a.cle, ajoute(cle, a.droit))
+
+#ex 2
+def empaqueter(liste_masses, c):
+    n = len(liste_masses)
+    nb_boites = 0
+    boites = [0]*n
+    for masse in liste_masses :
+        i=0
+        while i <= nb_boites and boites[i] + masse > c:
+                i = i + 1
+        if i == nb_boites + 1:
+                nb_boites = nb_boites + 1
+        boites[i] = boites[i] + masse
+    return nb_boites + 1
+
+#TP 13
+#ex 1
+def recherche(a, tab):
+    res = 0
+    for e in tab:
+        if e == a:
+            res = res + 1
+    return res
+
+#ex 2
+pieces = [1, 2, 5, 10, 20, 50, 100, 200]
+
+def rendu_monnaie(somme_due, somme_versee):
+    rendu = []
+    a_rendre = somme_versee - somme_due
+    i = len(pieces) - 1
+    while a_rendre != 0 :
+        if pieces[i] <= a_rendre:
+            rendu.append(pieces[i])
+            a_rendre = a_rendre - pieces[i]
+        else:
+            i = i - 1
+    return rendu
+
+
+#TP 14
+#ex 1
+def recherche(elt, tab):
+    for i in range(len(tab)):
+        if tab[i] == elt:
+            return i
+    return -1
+
+#ex 2
+def insere(a, tab):
+    """ Insère l'élément a (int) dans le tableau tab (list)
+        trié par ordre croissant à sa place et renvoie le
+        nouveau tableau. """
+    l = list(tab) #l contient les memes elements que tab
+    l.append(a)
+    i = len(l)-2
+    while a < l[i] and i >= 0:
+        l[i+1] = l[i]
+        l[i] = a
+        i = i - 1
+    return l
+
+#TP 15
+#ex 1
+t_moy = [14.9, 13.3, 13.1, 12.5, 13.0, 13.6, 13.7]
+annees = [2013, 2014, 2015, 2016, 2017, 2018, 2019]
+
+def mini(releve, date):
+    minimum = releve[0]
+    annee = date[0]
+    for i in range(len(releve)):
+        if releve[i] < minimum:
+            minimum = releve[i]
+            annee = date[i]
+    return (minimum, annee)
+
+#ex 2
+def inverse_chaine(chaine):
+    result = ''
+    for caractere in chaine:
+       result = caractere + result
+    return result
+
+def est_palindrome(chaine):
+    inverse = inverse_chaine(chaine)
+    return inverse == chaine
+    
+def est_nbre_palindrome(nbre):
+    chaine = str(nbre)
+    return est_palindrome(chaine)
